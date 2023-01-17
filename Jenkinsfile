@@ -11,7 +11,9 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/justmeandopensource/playjenkins.git'
+        git 'https://github.com/AntonTelusInt/playjenkins.git'
+        sh 'ls -la'
+        sh 'pwd'
       }
     }
 
@@ -37,6 +39,7 @@ pipeline {
       steps {
         script {
           kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
+          sh 'ls -la && pwd'
         }
       }
     }
